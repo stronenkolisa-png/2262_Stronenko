@@ -31,6 +31,8 @@ while i < len(x) - 1 and i <= x[i] <= 2*i:
     i += 1
 print(i)
 ```
+<img width="562" height="198" alt="image" src="https://github.com/user-attachments/assets/b630debb-31f7-4edd-ae79-1b868ecddb93" />
+
 
 ### Задание 2 **(2)**
 *Рассмотрим программу на языке* **Python**.
@@ -55,6 +57,9 @@ print(i)
 
 Исходный цикл останавливается, если число попадает в промежуток [i, 2*i) или [3*i, 4*i). Поэтому в условии while записаны три случая, когда можно идти дальше: x[i] < i, 2*i <= x[i] < 3*i или x[i] >= 4*i. Например, при i = 1 число 2 пропускается, потому что правая граница первого промежутка в него не входит. На числе 3 цикл остановится, потому что это начало второго промежутка.
 
+<img width="612" height="218" alt="image" src="https://github.com/user-attachments/assets/26356220-ed4f-47d3-884e-591361402f2e" />
+
+
 ```
 x = [int(t) for t in input().split()]
 i = 0
@@ -70,6 +75,9 @@ print(i)
 
 
 Внешний цикл перебирает строки массива, а внутренний - элементы строки. Первый ноль находится во второй строке на втором месте. Нумерация начинается с нуля, поэтому программа выводит 1 1. Команда break search завершает сразу оба цикла, потому что метка search стоит перед внешним циклом.
+
+<img width="596" height="414" alt="image" src="https://github.com/user-attachments/assets/540a6213-61e1-4d8e-b1ad-995c1d78eb36" />
+
 ```
 public class Main {
     public static void main(String[] args) {
@@ -98,7 +106,10 @@ print(*b)
 *Объясните, почему список* **b** *получился именно таким.*
 
 
-Цикл берёт x с начала списка, а a.pop() удаляет и возвращает последний элемент. Поэтому по очереди вычисляются 9 − 0, 8 − 1, 7 − 2, 6 − 3 и 5 − 4. После пяти шагов в списке остаются элементы с индексами от 0 до 4, а следующий индекс для обхода уже 5. Цикл заканчивается, и программа выводит 9 7 5 3 1.
+Цикл берёт x с начала списка, а a.pop() удаляет и возвращает последний элемент. Поэтому по очереди вычисляются 9 − 0, 8 − 1, 7 − 2, 6 − 3 и 5 − 4. После пяти шагов в списке остаются элементы с индексами от 0 до 4, а следующий индекс для обхода уже 5. Цикл заканчивается, и программа выводит 9 7 5 3 1
+
+<img width="611" height="110" alt="image" src="https://github.com/user-attachments/assets/98d44125-f8ea-4398-b009-0fd415fe4fe1" />
+
 ```
 a = list(range(10))
 b = [a.pop() - x for x in a]
@@ -116,23 +127,30 @@ print(*b)
 
 Программа сохраняет последний элемент в last, чтобы прибавить его исходное значение к каждому числу, включая последнее. Запись auto &x позволяет менять сам элемент вектора. После сложения программа проверяет его знак. Например, [-3, 0, 2] превращается в [-1, 2, 4]. Выводится 2 1, потому что положительных чисел два, а отрицательное одно.
 
-```
-int main() {
-    int n;
-    cin >> n;
-    vector<long long> a(n);
-    for (auto &x : a)
-        cin >> x;
+<img width="612" height="549" alt="image" src="https://github.com/user-attachments/assets/e374931e-1984-4a7a-bb5f-caae434bf4f1" />
 
-    const auto last = a.back();
-    int positive = 0, negative = 0;
-    for (auto &x : a) {
-        x += last;
-        if (x > 0) ++positive;
-        if (x < 0) ++negative;
-    }
-    cout << positive << " " << negative << endl;
-}
+
+```
+   int n;
+   std::cin >> n;
+   std::vector<int> a(n);
+   for (int &x : a){
+      std::cin >> x;
+      }
+   int last = a[n-1];
+   int pos =0;
+   int neg = 0;
+   for (int &x : a) {
+      x += last;
+   if (x > 0){
+      ++pos;
+      }
+   if (x < 0){
+      ++neg;
+      }
+   }
+   std::cout << pos << " " << neg << endl;
+   }
 ```
 
 ### Задание 6 **(3)**
@@ -156,43 +174,48 @@ forc(i, from, to)
 *Написанные программы сохраните в папку с номером задания.*
 
 
-Первое различие касается счётчика. В обычном for переменную i можно увеличить прямо в теле цикла. В первой программе из-за дополнительного ++i получаем 0 2 4. В forc имя i служит константной ссылкой на счётчик. Через неё можно прочитать значение, а попытка выполнить ++i вызовет ошибку компиляции. В рабочем варианте счётчик увеличивается в заголовке, и выводится 0 1 2 3 4.
+Первый цикл выводит 0 2 4, потому что i увеличивается дважды: внутри цикла и после каждого прохода. Во втором цикле i - константная ссылка на counter. Через неё можно прочитать значение счётчика, а попытка выполнить i++ вызовет ошибку. Сам counter увеличивается после каждого прохода, поэтому выводится 0 1 2 3 4.
 
 Второе различие касается верхней границы. В обычном for условие i < n проверяется перед каждым проходом с текущим значением n. Во второй программе после первого прохода n становится равно 2, поэтому выводится 0 1. В forc начальное значение n заранее копируется в end. В end остаётся 4, поэтому выводится 0 1 2 3. В обоих примерах forc записан через его раскрытие из условия.
 
+<img width="616" height="385" alt="image" src="https://github.com/user-attachments/assets/4fae8a2e-f96a-4f58-9567-daa562083b42" />
+
+
 ```
 int main() {
-    for (int i = 0; i < 5; ++i) {
-        cout << i << " ";
-        ++i;
-    }
-    cout << endl;
-
-    int counter = 0, end = 5;
-    for (const int &i = counter; i < end; ++counter) {
-        cout << i << " ";
-        // ++i;  // При раскомментировании возникнет ошибка.
-    }
-    cout << endl;
+     for (int i = 0; i < 5; i++) {
+    std::cout << i << " ";
+    i++;
+}
+std::cout << '\n';
+int cnt = 0;
+int end = 5;
+for (const int &i = cnt; i < end; cnt++) {
+    std::cout << i << " ";
+    i++;  
+   }
 }
 ```
+
+<img width="595" height="379" alt="image" src="https://github.com/user-attachments/assets/8da31c20-f302-4fc1-9ee0-8814b43261ad" />
+
 
 ```
 int main() {
     int n = 4;
-    for (int i = 0; i < n; ++i) {
-        cout << i << " ";
-        n = 2;
-    }
-    cout << endl;
 
-    n = 4;
-    int counter = 0, end = n;
-    for (const int &i = counter; i < end; ++counter) {
-        cout << i << " ";
-        n = 2;
-    }
-    cout << endl;
+for (int i = 0; i < n; i++) {
+    std::cout << i << " ";
+    n = 2;
+}
+
+std::cout << '\n';
+n = 4;
+int cnt = 0;
+int end = n;
+for (const int &i = cnt; i < end; cnt++) {
+    std::cout << i << " ";
+    n = 2;
 }
 ```
 
@@ -211,9 +234,11 @@ int main() {
 
 В Python блок else относится к циклу for. Если встретилось отрицательное число, программа печатает его и выходит через break. Если цикл дошёл до конца, выполняется else. В C++ у цикла нет блока else, поэтому добавляем переменную found. Она запоминает, нашли ли мы отрицательное число. В обе программы числа вводятся одной строкой через пробел.
 
+<img width="639" height="285" alt="image" src="https://github.com/user-attachments/assets/83e3d601-fde4-4db6-aaac-16939b24cd8c" />
+
 ```
-numbers = [int(t) for t in input().split()]
-for x in numbers:
+num = [int(t) for t in input().split()]
+for x in num:
     if x < 0:
         print(x)
         break
@@ -221,22 +246,23 @@ else:
     print("Отрицательных чисел нет")
 ```
 
+<img width="667" height="441" alt="image" src="https://github.com/user-attachments/assets/f06cff2f-d53c-4673-875e-984aaf04c3b8" />
+
+
 ```
 int main() {
-    string line;
-    getline(cin, line);
-    istringstream numbers(line);
-    int x;
-    bool found = false;
-    while (numbers >> x) {
-        if (x < 0) {
-            cout << x << endl;
-            found = true;
-            break;
-        }
+int x;
+bool found = false;
+while (std::cin >> x) {
+    if (x < 0) {
+        std::cout << x;
+        found = true;
+        break;
     }
-    if (!found)
-        cout << "Отрицательных чисел нет" << endl;
+}
+if (found == false) {
+    std::cout << "Отрицательных чисел нет";
+ }
 }
 ```
 
@@ -301,10 +327,11 @@ print(...)
 ```
 Слева сохраняем позицию со значением False, справа — со значением True. Если в середине получили True, переносим туда правую границу. Если получили False, переносим левую. Когда границы становятся соседними, right указывает на первое True. Для функции из задания программа выведет 1000.
 
+<img width="595" height="250" alt="image" src="https://github.com/user-attachments/assets/1bb65b05-ce65-47ad-94cb-c29f6e71d423" />
+
 ```
 def t(i):
     return i >= 1000
-
 left = -1
 right = 10**18
 while right - left > 1:
