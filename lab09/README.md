@@ -4,8 +4,7 @@
 ### Задание 1 **(2)**
 *Рассмотрим следующую программу.*
 ```
-d = {'sep': ',' , 'end': '\n'}
-l = ['Утопия', 14, 'Вселенная', 25]
+d = {'sep': ',' , 'end': '\n'}\
 print (l, d)
 print (*l, d)
 print (*l, *d)
@@ -14,6 +13,9 @@ print (*l, **d)
 *Объясните результаты ее работы.*
 
 *При устном ответе на вопросы вам потребуется рассказать, что такое "Утопия 14" и "Вселенная 25".*
+
+<img width="731" height="420" alt="изображение" src="https://github.com/user-attachments/assets/640c3af8-329d-4049-81c9-1d4d2102d378" />
+
 
 ### Задание 2 **(2)**
 *Напишите функцию* **sublist** для решения следующей задачи.*
@@ -31,6 +33,17 @@ print (*l, **d)
 >>> sublist(lst, 0, 1, 2, 3, 4, 5)
 ['Anna', 'Barbara', 'Clara', 'Diana', 'Eva', 'Flora']
 ```
+def sublist(lst, *nums):
+    return [lst[i] for x in nums] 
+print(lst)
+print(nums)
+
+def sublist(lst, *nums):
+    return [lst[i] for i in nums] 
+lst = [ 'Anna', 'Barbara', 'Clara', 'Diana', 'Eva', 'Flora']
+print(sublist(lst, 0, 2, 5))
+
+<img width="860" height="380" alt="изображение" src="https://github.com/user-attachments/assets/5e454e9b-e51b-4fda-a8cc-5ba214032cd9" />
 
 ### Задание 3 **(1)**
 
@@ -47,6 +60,11 @@ print (*l, **d)
 >>> print(ans)
 6143
 ```
+lst = list(range(6000 ,7000))
+x = max(lst, key = lambda x: bin(x).count('1'))
+print(x)
+
+<img width="754" height="212" alt="изображение" src="https://github.com/user-attachments/assets/1cdace84-4f55-4538-80ea-adbe778543fa" />
 
 
 ### Задание 4 **(2)**
@@ -63,6 +81,13 @@ print (*l, **d)
 >>> print (lst)
 ['bye', 'hell', 'babye', 'hello', 'world']
 ```
+lst = ['hello', 'hell', 'bye', 'world', 'bybye']
+lst.sort(key = lambda x: (len(x), x))
+print(lst)
+
+сначала 
+
+<img width="809" height="220" alt="изображение" src="https://github.com/user-attachments/assets/8f0a1801-a6fe-4185-89f0-1000d17fa0e0" />
 
 ### Задание 5 **(2)**
 
@@ -82,6 +107,17 @@ hello   ,   world ,   and ,   goodbye
 ```
 *Программа должна быть написана с использованием парадигмы функционального программирования, то есть без использования циклов, присваиваний и т.д. Программа может использовать функции* **input**, **print**, **len**, **map** *и методы строк* **split** и **strip**.
 
+print(
+*map(len(),
+    map(str.strip,
+        input().split(','))
+        ),
+    sep = ','
+)
+inp = input().split(',')
+strp = map(str.strip, inp)
+ln = map(len, strp)
+print(*ln)
 
 ### Задание 6 **(2)**
 
@@ -98,6 +134,16 @@ hello   ,   world ,   and ,   goodbye
 >>> print (*gen(7))
 7 22 11 34 17 52 26 13 40 20 10 5 16 8 4 2 1
 ```
+
+def gen(x):
+    yield x
+    while x != 1:
+        if x%2 == 0:
+            x //= 2
+        else:
+            x= 3*x + 1
+    yield x        
+print (*gen(17))
 
 ### Задание 7 **(2)**
 
@@ -120,6 +166,18 @@ def every_other(seq):
 2 5 11 3 8
 21
 ```
+     
+def every_other(seg):
+    it = iter(seg)
+    x = next(it, None)
+    while x != None:
+        yield x
+        x = next(it, None)
+        x = next(it, None)
+print (*every_other([10, 20, 30, 40, 50]))
+
+
+<img width="864" height="382" alt="изображение" src="https://github.com/user-attachments/assets/cf6fdd8a-705f-4aaf-bb3c-26c8e25684a3" />
 
 
 
