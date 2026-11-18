@@ -21,10 +21,17 @@ std::cout << *p <<' '<< *q << std::endl;
 
 *Примеры программ сохраните в папке с номером задания. Скриншоты работы прикрепите к отчету.*
 
-<img width="608" height="281" alt="изображение" src="https://github.com/user-attachments/assets/d30af7ed-b0cc-49a5-9202-31aec24393e6" />
+<img width="668" height="347" alt="изображение" src="https://github.com/user-attachments/assets/8def66c7-d3d3-4a3d-a24e-18dc83616800" />
 
-<img width="731" height="312" alt="изображение" src="https://github.com/user-attachments/assets/0f2f01cb-3dde-46a9-9506-1e5f084604ff" />
+<img width="629" height="398" alt="изображение" src="https://github.com/user-attachments/assets/4cd7e9c9-6338-4f1e-8f0d-2309a4f13047" />
 
+'*' - описатель указателя
+'*' в выражение - оператор разыменования и оператор взятия адреса 
+сначала берется значение по адресу у p и присваивается к значению адреса q
+в первом случае п и ку указывают на переменные а и б
+
+*p = *q; присваиваются знаячения
+p = q;присваиваются адреса сначала p хранит адрес b вместо a
 
 ### Задание 2 **(1)**
 
