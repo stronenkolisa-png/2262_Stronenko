@@ -24,11 +24,12 @@ std::cout << *p <<' '<< *q << std::endl;
 <img width="668" height="347" alt="изображение" src="https://github.com/user-attachments/assets/8def66c7-d3d3-4a3d-a24e-18dc83616800" />
 
 <img width="629" height="398" alt="изображение" src="https://github.com/user-attachments/assets/4cd7e9c9-6338-4f1e-8f0d-2309a4f13047" />
-
-"*" - описатель указателя
-"*" в выражение - оператор разыменования и оператор взятия адреса 
+```
+* - описатель указателя
+* в выражение - оператор разыменования и оператор взятия адреса 
 сначала берется значение по адресу у p и присваивается к значению адреса q
 в первом случае п и ку указывают на переменные а и б
+```
 
 *p = *q; присваиваются знаячения
 
@@ -50,7 +51,13 @@ for (int i = 0; i <10; i++)
 *Записанную программу сохраните в папке с номером задания.*
 *Скриншоты работы прикрепите к отчету.*
 
-![пример скриншота](02.png)
+<img width="811" height="484" alt="изображение" src="https://github.com/user-attachments/assets/06e7d263-0f0d-4ced-9703-b16df87bcb45" />
+
+описание элементов массива в 16-ой записи и 10-ой записи, они идут через 8 те каждый на 8 больше предыдущего, элементы в массиве идут подряд это позволяет найти элементы в памяти 
+у каждого из 8 байт есть место в памяти
+
+<img width="879" height="515" alt="изображение" src="https://github.com/user-attachments/assets/6e4adbd2-88f9-4730-8bfe-7f75c978dcfb" />
+если изменить тип на int то шаг уже будет 4 
 
 ### Задание 3 **(2)**
 
@@ -93,7 +100,16 @@ if (p < q)
 else
     std::cout << "No";
 ```
+<img width="542" height="335" alt="изображение" src="https://github.com/user-attachments/assets/afad3f81-3e19-4b8a-82e9-284e53c77ac4" />
 
+у p < чем у q те у y<x
+элементы по памяти раскиданы как захотелось компу сначала в пяти поместилось x потом y
+
+<img width="581" height="334" alt="изображение" src="https://github.com/user-attachments/assets/7d5f4d58-2590-44b5-9695-23879a51ad00" />
+если поменять местами объявление переменных то будет no
+
+<img width="734" height="358" alt="изображение" src="https://github.com/user-attachments/assets/9b71efc2-fd4b-4238-bb82-9a31142b60ea" />
+от компилятора зависит даже при static может быть yes а может быть no
 
 ### Задание 6 **(2)**
 
@@ -105,7 +121,21 @@ double x = 0;
 double *d = &x;
 std::cout << reinterpret_cast<size_t>(d + 4) - reinterpret_cast<size_t>(d - 4) << std::endl;
 ```
+<img width="793" height="354" alt="изображение" src="https://github.com/user-attachments/assets/5c1a2fa8-49bc-4084-874c-f437aca715a0" />
 
+указатель смещается на константу умноженную на 8
+```
+#include <iostream>
+signed main(){
+std::pair<double, int> x = 0;
+std::pair<double, int> *d = &x;
+
+std::cout << "d = " << reinterpret_cast<size_t>(d) << std::endl;
+std::cout << "d+4 = " << reinterpret_cast<size_t>(d+4) << std::endl;
+std::cout << "d-4 = " << reinterpret_cast<size_t>(d-4) << std::endl;
+std::cout << reinterpret_cast<size_t>(d + 4) - reinterpret_cast<size_t>(d - 4) << std::endl;
+```
+}
 ### Задание 7 **(2)**
 
 *Объясните работу следующей программы. Как изменится
@@ -114,6 +144,11 @@ std::cout << reinterpret_cast<size_t>(d + 4) - reinterpret_cast<size_t>(d - 4) <
 ```
 std::cout << reinterpret_cast <double*>(3000) - reinterpret_cast <double*>(2000) << std::endl;
 ```
+<img width="836" height="293" alt="изображение" src="https://github.com/user-attachments/assets/d38a55f7-1aff-4776-afe2-b2f82a298450" />
+
+3000-2000=1000 
+1000/8 =125
+количество значений double которые мы можем поместить в массив если начало массива 2000 а конец 3000 (адреса)
 
 ### Задание 8 **(2)**
 
@@ -127,7 +162,10 @@ int *b=a + 8;
 for (int i =...; i <...; i++)
     std::cout << b[i] <<' ';
 ```
+<img width="748" height="308" alt="изображение" src="https://github.com/user-attachments/assets/a2b3d846-4925-46d5-ae2b-e426907e6ada" />
 
+
+b[i] === *(b+i)
 
 ### Задание 9 **(2)**
 
@@ -166,6 +204,9 @@ std::cout << s;
 
 *Записанную программу сохраните в папке с номером задания.*
 
+<img width="515" height="272" alt="изображение" src="https://github.com/user-attachments/assets/efe7c46c-be36-4694-b103-c8c81de5e341" />
+
+в цикле присваиваем указателю x, в условии у нас пока p меньше x+10 мы увеличиваем p++
 
 ## Дополнительные задания
 
