@@ -208,6 +208,80 @@ std::cout << s;
 
 в цикле присваиваем указателю x, в условии у нас пока p меньше x+10 мы увеличиваем p++
 
+## Практикум 4
+### Задание 1
+```
+n = int(input())
+num = 1
+cnt = 0
+while cnt < n:
+    num += 1
+    div = 2
+    while div * div <= num and num % div != 0:
+        div += 1
+    if div * div > num:
+        cnt += 1
+print(num)
+```
+Перебираем числа начиная с 2 и считаем, сколько простых нашли. Делители достаточно проверять до квадратного корня. Если число составное, хотя бы один из двух множителей не больше корня
+
+### Задание 2
+```
+n = int(input())
+dresses = input().split()
+seen = [0, 0, 0, 0]
+i = 0
+cnt = 0
+while i < n and cnt < 3:
+    dress = int(dresses[i])
+    if seen[dress] != 1:
+        seen[dress] = 1
+        cnt += 1
+    i += 1
+print(i)
+```
+i- сколько дней уже просмотрели, cnt - сколько разных платьев встретилось. В списке seen для каждого платья храним 0 или 1.Платья пронумерованы от 1 до 3, поэтому seen[0] не используется. После i += 1 значение i совпадает с номером только что просмотренного дня.
+
+### Задание 3
+```
+word = input()
+letters = 'abcdefghijklmnopqrstuvwxyz'
+i = 0
+best_cnt = 0
+best_letter = ''
+while i < len(letters):
+    cnt = word.count(letters[i])
+    if cnt > best_cnt:
+        best_cnt = cnt
+        best_letter = letters[i]
+    i += 1
+print(word.replace(best_letter, ''))
+```
+i -индекс буквы в алфавите, cnt - сколько раз эта буква встречается в слове.
+cnt считаем заново для каждой буквы, а в best_cnt храним самый большой результат. В конце replace() удаляет все вхождения выбранной буквы.
+
+### Задание 4
+```
+n = int(input())
+for i in range(n):
+    pass = input()
+    row1 = row2 = row3 = row4 = False
+    for char in pass:
+        if char in '1234567890':
+            row1 = True
+        elif char in 'qwertyuiop':
+            row2 = True
+        elif char in 'asdfghjkl':
+            row3 = True
+        elif char in 'zxcvbnm':
+            row4 = True
+    if row1 and row2 and row3 and row4:
+        print('strong')
+    else:
+        print('weak')
+```
+Можно пройти по символам пароля один раз. Для каждого ряда заводим переменную, которая станет True, если встретится символ из этого ряда.Если в пароле есть хотя бы один символ из каждого ряда, все четыре переменные будут True
+
 ## Дополнительные задания
 
 ### Задание 1 **(3)**
