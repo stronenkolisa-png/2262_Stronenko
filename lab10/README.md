@@ -320,24 +320,20 @@ for i in range(1, len(word)):
 
 ### Задание 4
 ```
-n = int(input())
-for i in range(n):
-    pass = input()
-    row1 = row2 = row3 = row4 = False
-    for char in pass:
-        if char in '1234567890':
-            row1 = True
-        elif char in 'qwertyuiop':
-            row2 = True
-        elif char in 'asdfghjkl':
-            row3 = True
-        elif char in 'zxcvbnm':
-            row4 = True
-    if row1 and row2 and row3 and row4:
-        print('strong')
-    else:
-        print('weak')
+n, m = map(int, input().split())
+matrix = []
+
+for _ in range(n):
+    matrix.append(list(map(int, input().split())))
+
+for j in range(m):
+    row = []
+    for i in range(n):
+        row.append(matrix[i][j])
+    print(*row)
+
 ```
+**Транспонирование матрицы** — `04_transpose.py`. Читаем матрицу как список строк. Для каждого столбца `j` берём элементы `matrix[i][j]` по всем строкам `i` и печатаем их в одной строке. Получается `m` строк по `n` чисел.
 Можно пройти по символам пароля один раз. Для каждого ряда заводим переменную, которая станет True, если встретится символ из этого ряда.Если в пароле есть хотя бы один символ из каждого ряда, все четыре переменные будут True
 
 ## Дополнительные задания
