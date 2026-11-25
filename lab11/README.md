@@ -134,6 +134,46 @@ int main(){
 
 *В отчет запишите программу и скриншот ее работы.*
 
+<img width="1416" height="486" alt="image" src="https://github.com/user-attachments/assets/b1e2deba-3346-44bf-ae9e-553e7126ff41" />
+глобальную видено везде а статическую только из функции
+локальные массивы размещаются на стеке
+<img width="1375" height="503" alt="image" src="https://github.com/user-attachments/assets/2bbe4425-011d-4b87-b8f1-19bd7ceebb21" />
+
+увеличиваем
+статический массив создается один раз и инициализируется один раз
+<img width="1503" height="619" alt="image" src="https://github.com/user-attachments/assets/1ef37b76-22cf-4235-966c-606cb00bdfd2" />
+
+```
+#include <iostream>
+#include <vector>
+int G1[128] = {0}, G2[128] = {0};
+void foo(){
+    static int s1[128] = {0}, s2[128] = {0};
+    int L1[128] = {0}, L2[128] = {0};
+    int *H1 = new int[128]{0};
+    int *H2 = new int[128]{0};
+    std::cout <<"Global "<< &G1[0]<<' '<<G1+128<<' '<<&G2[0]<<' '<<G2+128<<std::endl;
+    std::cout <<"Static "<< &s1[0]<<' '<<s1+128<<' '<<&s2[0]<<' '<<s2+128<<std::endl;
+    std::cout <<"Local "<< &L1[0]<<' '<<L1+128<<' '<<&L2[0]<<' '<<L2+128<<std::endl;
+    std::cout <<"Heap "<< &H1[0]<<' '<<H1+128<<' '<<&H2[0]<<' '<<H2+128<<std::endl;
+    std::cout <<std::endl;
+    H1[0]++;
+    L1[0]++;
+    s1[0]++;
+    std::cout<<H1[0]<<" "<<L1[0]++<<" "<<s1[0]<<std::endl;
+    delete[] H1;
+    delete[] H2;
+}
+void bar(){
+    foo();
+}
+int main(){
+    foo();
+    bar();
+    foo();
+    return 0;
+}
+```
 ### Задание 5 **(2)**
 
 *Приведенная ниже программа вызывает ошибку. Почему?*
