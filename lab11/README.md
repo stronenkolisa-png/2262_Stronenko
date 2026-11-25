@@ -18,6 +18,12 @@ int main() {
     return 0;
 }
 ```
+декларация функции
+
+<img width="1092" height="295" alt="image" src="https://github.com/user-attachments/assets/c4753cf5-9448-4438-bffc-51184ee11f34" />
+
+<img width="844" height="269" alt="image" src="https://github.com/user-attachments/assets/e1f9ecff-45d6-48cf-a74b-82ec02d024e0" />
+
 
 ### Задание 2 **(1)**
 
@@ -64,7 +70,53 @@ void dosome_4(std::vector<int> V);
 dosome({1, 2, 3});
 ```
 
+<img width="1285" height="774" alt="image" src="https://github.com/user-attachments/assets/f36b61dd-75f8-4d5e-8263-bd506aff6b1e" />
 
+```
+#include <iostream>
+#include <vector>
+void dosome_1(const std::vector<int> &V){
+    int s =0;
+    for(auto x: V){
+        s+=x;
+    }
+    std::cout<<"sum = "<<s<<std::endl;
+}
+void dosome_2(std::vector<int> &V){
+    int s =0;
+    for(auto x: V){
+        s+=x;
+    }
+    std::cout<<"sum = "<<s<<std::endl;
+}
+void dosome_3(const std::vector<int> V){
+    int s =0;
+    for(auto x: V){
+        s+=x;
+    }
+    std::cout<<"sum = "<<s<<std::endl;
+}
+void dosome_4(std::vector<int> V){
+    int s =0;
+    for(auto x: V){
+        s+=x;
+    }
+    std::cout<<"sum = "<< s <<std::endl;
+}
+int main(){
+    std::vector<int> V = {1, 2, 3, 4, 5};
+    dosome_1(V);
+    dosome_2(V);
+    dosome_3(V);
+    dosome_4(V);
+    return 0;
+}
+```
+все четыре способа работающие 
+
+<img width="878" height="769" alt="image" src="https://github.com/user-attachments/assets/1b172bd7-96dd-44e2-91da-b550ec0c5aa7" />
+ошибюка в 1 и 3 векторе тк оба вектора неизменяемые это нужно чтобы по случайности не поменять (не получить доп ошибок)
+<img width="571" height="753" alt="image" src="https://github.com/user-attachments/assets/81311042-0cd9-4820-be12-61350ca19141" />
 
 ### Задание 4 **(2)**
 
